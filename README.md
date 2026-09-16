@@ -1,176 +1,131 @@
-# 🚧 Real-Time Obstacle Detection using YOLOv8 and OpenCV
+# AI Object Detection Portal using YOLOv8 and OpenCV
 
-An AI-powered computer vision project that detects obstacles such as **people, cars, buses, trucks, bicycles, and motorcycles** from images and videos using the **YOLOv8** deep learning model. The system identifies objects, draws bounding boxes around them, and displays confidence scores, making it suitable for real-time obstacle detection applications.
+An interactive object detection portal that uses **YOLOv8** to detect objects from uploaded **images and videos** through a single, user-friendly workflow.
 
----
+## Project Overview
 
-## 📌 Project Overview
+This project extends traditional YOLOv8 object detection into an interactive web-based portal using **Gradio**.
 
-This project uses the pre-trained **YOLOv8** model from Ultralytics for object detection. Instead of training a model from scratch, it leverages transfer learning to detect common objects efficiently.
+Instead of maintaining separate image and video workflows, the portal accepts a single uploaded file and automatically determines whether it is an image or a video. YOLOv8 then performs object detection and generates an annotated result with bounding boxes, object labels, and confidence scores.
 
-The project can process:
+## Key Features
 
-- 🖼️ Images
-- 🎥 Videos
-- 📦 Multiple objects in a single frame
+* Upload either an image or video through a single interface
+* Automatically identify the uploaded file type
+* Detect objects using the pretrained YOLOv8 model
+* Display bounding boxes, object labels, and confidence scores
+* Process videos frame by frame
+* Generate annotated image and video outputs
+* Interactive web interface built with Gradio
+* Simple and user-friendly detection workflow
 
----
+## Workflow
 
-## ✨ Features
-
-- Detects multiple objects simultaneously
-- Supports both image and video input
-- Displays bounding boxes with confidence scores
-- Built using Python, OpenCV, and YOLOv8
-- Compatible with Google Colab
-- Saves processed output automatically
-
----
-
-## 🛠️ Technologies Used
-
-- Python
-- OpenCV
-- YOLOv8
-- Ultralytics
-- Google Colab
-
----
-
-## 📂 Project Structure
-
+```text
+Upload Image / Video
+        ↓
+Automatic File Type Detection
+        ↓
+       YOLOv8
+        ↓
+Object Detection
+        ↓
+Annotated Image / Video
+        ↓
+Object Labels + Confidence Scores
 ```
+
+## Technologies Used
+
+* Python
+* YOLOv8
+* Ultralytics
+* OpenCV
+* Gradio
+* Google Colab
+
+## Model
+
+The project uses the **pretrained YOLOv8n model** from Ultralytics for object detection.
+
+The model is used directly for inference without custom training.
+
+## Output
+
+For images, the portal generates:
+
+* Bounding boxes around detected objects
+* Object names
+* Confidence scores
+
+For videos, the system:
+
+* Processes the video frame by frame
+* Applies YOLOv8 detection to each frame
+* Generates an annotated output video
+
+## Interactive Portal
+
+The detection interface was developed using **Gradio**, providing a simple web-based workflow for uploading an image or video and viewing the detection results.
+
+> The current Gradio interface is used for development and demonstration. A permanent public deployment using Hugging Face Spaces is planned as a future enhancement.
+
+## Project Structure
+
+```text
 Obstacle-Detection-Using-YOLOv8-and-OpenCV/
 │
 ├── Obstacle_Detection_YOLO.ipynb
-├── README.md
 ├── requirements.txt
-│
-├── input/
-│   ├── classroom.jpg
-│   └── bike and car.mp4
-│
+├── README.md
 ├── output/
-│   ├── classroom_output.png
-│   └── bike_and_car_output.mp4
-│
 └── screenshots/
-    ├── detection_image.png
-    └── detection_video.png
 ```
 
----
+## How to Run
 
-## 🔄 Workflow
-
-```
-Input Image / Video
-        │
-        ▼
-Load YOLOv8 Model
-        │
-        ▼
-Detect Objects
-        │
-        ▼
-Draw Bounding Boxes
-        │
-        ▼
-Display Results
-        │
-        ▼
-Save Output
-```
-
----
-
-## 📷 Sample Output
-
-### Image Detection
-
-<img src="screenshots/detection_image.png" width="700">
-
-### Video Detection
-
-<img src="screenshots/detection_video.png" width="700">
-
----
-
-## 🚀 Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/<your-username>/Obstacle-Detection-Using-YOLOv8-and-OpenCV.git
-```
-
-Install the required packages:
+### 1. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-or
+### 2. Open the notebook
 
-```bash
-pip install ultralytics
-pip install opencv-python
-pip install matplotlib
+Open:
+
+```text
+Obstacle_Detection_YOLO.ipynb
 ```
 
----
+using Google Colab or Jupyter Notebook.
 
-## ▶️ How to Run
+### 3. Load the YOLOv8 model
 
-1. Open the notebook in **Google Colab**.
-2. Upload an image or video.
-3. Run all notebook cells.
-4. The processed output will be saved in:
+```python
+from ultralytics import YOLO
 
-```
-runs/detect/predict/
+model = YOLO("yolov8n.pt")
 ```
 
----
+### 4. Run the detection portal
 
-## 📊 Detection Classes
+Execute the Gradio application cells and upload an image or video through the interface.
 
-The model can detect several common objects including:
+## Sample Results
 
-- Person
-- Car
-- Bus
-- Truck
-- Bicycle
-- Motorcycle
+The project includes sample detection outputs and screenshots demonstrating YOLOv8 object detection on images and videos.
 
-Each detected object is displayed with:
+## Future Enhancements
 
-- Bounding Box
-- Class Label
-- Confidence Score
+* Deploy the Gradio application permanently using Hugging Face Spaces
+* Improve the web interface and result visualization
+* Add downloadable detection results
+* Support additional YOLO models and custom-trained datasets
 
----
-
-## 📈 Future Improvements
-
-- Real-time webcam detection
-- Distance estimation
-- Obstacle warning system
-- Object tracking
-- Raspberry Pi deployment
-- Lane detection integration
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
-
-## 👩‍💻 Author
+## Author
 
 **Archana Ramesh**
 
-If you found this project useful, feel free to ⭐ the repository.
+B.Tech (Hons.) Artificial Intelligence & Data Science
+Velammal Institute of Technology
